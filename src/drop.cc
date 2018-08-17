@@ -6,28 +6,29 @@
  * 1: position is occupied
  * 2: out of range
  * 3: death
+ * 9: other error
  */
 
-int is_drop_enabled(Field& f, uint8_t row, uint8_t col, E_OCC_TYPE ot) {
-  int result = -1;
+uint8_t is_drop_enabled(Field& f, uint8_t row, uint8_t col, E_OCC_TYPE ot) {
+  uint8_t status = 9;
   do {
     if (row == 0 || row >= (ROW_CNT - 2) || col == 0 || col >= (COL_CNT - 2)) {
-      result = 1;
+      status = 1;
       break;
     }
     if (f.eyes[row][col].ot != E_OCC_TYPE::EMPTY) {
-      result = 2;
+      status = 2;
       break;
     }
     E_OCC_TYPE ot_round = field_occtype_round(f, row, col);
     if ((ot == E_OCC_TYPE::BLACK && ot_round == E_OCC_TYPE::WHITE) ||
         (ot == E_OCC_TYPE::WHITE && ot_round == E_OCC_TYPE::BLACK)) {
-      result = 3;
+      status = 3;
       break;
     }
-    result = 0;
+    status = 0;
   } while (0);
-  return result;
+  return status;
 }
 
 Drop drop_at(Field& f, uint8_t row, uint8_t col, E_OCC_TYPE ot, Record& record) {
