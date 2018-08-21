@@ -1,5 +1,5 @@
-#ifndef SYZGO_INCLUDE_DROP_H_
-#define SYZGO_INCLUDE_DROP_H_
+#ifndef TEAGO_INCLUDE_DROP_H_
+#define TEAGO_INCLUDE_DROP_H_
 
 #include "include/base.h"
 #include "include/field.h"

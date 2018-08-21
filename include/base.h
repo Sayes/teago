@@ -1,5 +1,5 @@
-#ifndef SYZGO_INCLUDE_BASE_H_
-#define SYZGO_INCLUDE_BASE_H_
+#ifndef TEAGO_INCLUDE_BASE_H_
+#define TEAGO_INCLUDE_BASE_H_
 
 #include <stdint.h>
 #include <vector>

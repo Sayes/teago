@@ -38,6 +38,7 @@ Drop drop_at(Field& f, uint8_t row, uint8_t col, E_OCC_TYPE ot, Record& record) 
     f.eyes[row][col].row = row;
     f.eyes[row][col].col = col;
     f.eyes[row][col].ot = ot;
+    f.eyes[row][col].grpid = 1000;
     field_update(f);
   }
   return drop;
