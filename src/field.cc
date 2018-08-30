@@ -49,9 +49,18 @@ void field_update(Field& f) {
   for (int i = 1; i < ROW_CNT - 2; ++i) {
     for (int j = 1; j < COL_CNT - 2; ++j) {
       if (f.eyes[i][j].grpid == 1000) {
-        if (f.eyes[i - 1][j].grpid == 0 && f.eyes[i + 1][j].grpid == 0 &&
-            f.eyes[i][j - 1].grpid == 0 && f.eyes[i][j + 1].grpid == 0)
+        if (f.eyes[i - 1][j].grpid != 0 && f.eyes[i - 1][j].ot == f.eyes[i][j].ot) {
+          f.eyes[i][j].grpid = f.eyes[i - 1][j].grpid;  // LEFT
+        } else if (f.eyes[i + 1][j].grpid != 0 && f.eyes[i + 1][j].ot == f.eyes[i][j].ot) {
+          f.eyes[i][j].grpid = f.eyes[i + 1][j].grpid;  // RIGHT
+        } else if (f.eyes[i][j - 1].grpid != 0 && f.eyes[i][j - 1].ot == f.eyes[i][j].ot) {
+          f.eyes[i][j].grpid = f.eyes[i][j - 1].grpid;  // UP
+        } else if (f.eyes[i][j + 1].grpid != 0 && f.eyes[i][j + 1].ot == f.eyes[i][j].ot) {
+          f.eyes[i][j].grpid = f.eyes[i][j + 1].grpid;  // DOWN
+        } else if (f.eyes[i - 1][j].grpid == 0 && f.eyes[i + 1][j].grpid == 0 &&
+                   f.eyes[i][j - 1].grpid == 0 && f.eyes[i][j + 1].grpid == 0) {
           f.eyes[i][j].grpid = g_max_grpid++;
+        }
       }
     }
   }

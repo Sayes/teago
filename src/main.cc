@@ -15,6 +15,9 @@ int main(int argc, char* argv[]) {
   CHECK_DROP(drop_at(f, 0, 4, E_OCC_TYPE::BLACK, r));
   CHECK_DROP(drop_at(f, 16, 11, E_OCC_TYPE::BLACK, r));
   CHECK_DROP(drop_at(f, 9, 7, E_OCC_TYPE::WHITE, r));
+  CHECK_DROP(drop_at(f, 15, 11, E_OCC_TYPE::BLACK, r));
+  CHECK_DROP(drop_at(f, 9, 8, E_OCC_TYPE::WHITE, r));
+  CHECK_DROP(drop_at(f, 15, 10, E_OCC_TYPE::BLACK, r));
 
   field_render(f);
   drop_playback(r);
